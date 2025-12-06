@@ -150,7 +150,7 @@ int main() {
                 break;
 
             case 2:
-                searchStudent(head);
+                searchStudent();
                 break;
 
             case 3:
