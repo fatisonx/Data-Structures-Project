@@ -129,8 +129,6 @@ void displayAllStudents() {
 
 int main() {
     int choice;
-    Student* head = NULL;
-    Student* tail = NULL;
 
     do {
     
