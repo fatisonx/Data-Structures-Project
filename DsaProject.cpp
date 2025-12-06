@@ -47,42 +47,52 @@ void deleteStudent(Student*& head) {
 }
 
 
-void SearchStudent(Student* &head){
+void searchStudent(Student* &head){
     int id;
     cout<<"Enter Student's ID to look up: ";
     cin>>id;
 
     if(head == NULL){  //checking if the list is empty. 
         cout<<"There Are no students registered. ";
+        return;
     }
     Student* temp = head;
     
-    if(temp->id == id){  //at head node
+    
+    while(temp != NULL ){  //traversing in the list
+        if(temp->id == id){
         cout<<"Student Found. ";
-    }
-    else if()  //at the next node
+        cout<<"Name: "<<temp->name<<endl;
+        cout<<"ID: "<<temp->id<<endl;
+        cout<<"GPA: "<<temp->gpa<<endl;
+        cout<<"Major: "<<temp->major<<endl;
+        return;
+        }
+        temp = temp->next;
+    } 
+    cout << "Student not found.";
 }
  
 
  
 
 int main() {
-    Student* head = NULL;  //this is the head
-    Student* tail = NULL;  //this is the tail
-
     int choice;
-    
+    Student* head = NULL;
+    Student* tail = NULL;
+
     do {
-        cout << "      Student Management System      \n";
-        cout << "---–---------------------------------\n";
-        cout << "1. Add Student\n";
-        cout << "2. Search Student by ID\n";
-        cout << "3. Delete Student by ID\n";
-        cout << "4. Edit Student by ID\n";
-        cout << "5. Display All Students\n";
-        cout << "6. Exit\n";
-        cout << "---------------------------------\n";
-        cout << "Enter your choice: ";
+    
+    cout << "      Student Management System      \n";
+    cout << "---–---------------------------------\n";
+    cout << "1. Add Student\n";
+    cout << "2. Search Student by ID\n";
+    cout << "3. Delete Student by ID\n";
+    cout << "4. Display All Students\n";
+    cout << "5. Exit\n";
+    cout << "---------------------------------\n";
+    cout << "Enter your choice: ";
+        
         cin >> choice;
 
         switch (choice) {
@@ -91,22 +101,18 @@ int main() {
                 break;
 
             case 2:
-                searchStudent();
+                searchStudent(head);
                 break;
 
             case 3:
-                deleteStudent();
+                deleteStudent(head);
                 break;
 
             case 4:
-                editStudent();
-                break;
-
-            case 5:
                 displayAllStudents();
                 break;
 
-            case 6:
+            case 5:
                 cout << "Exiting program...\n";
                 break;
 
@@ -114,6 +120,7 @@ int main() {
                 cout << "Invalid choice! Please try again.\n";
         }
 
-    } while (choice != 6);
-   return 0;
+    } while (choice != 5);
+
+    return 0;
 }
