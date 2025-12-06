@@ -105,7 +105,7 @@ void searchStudent(){
         }
         temp = temp->next;
     } 
-    cout << "Student not found.";
+    cout << "Student not found.\n";
 }
  
 void displayAllStudents() {
