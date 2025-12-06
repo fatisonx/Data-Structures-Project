@@ -108,7 +108,23 @@ void searchStudent(Student* &head){
     cout << "Student not found.";
 }
  
+void displayAllStudents() {
+    if (head == NULL) {
+        cout << "No students to display.\n";
+        return;
+    }
 
+    Student* cur = head;
+    int i = 1;
+
+    while (cur != NULL) {
+        cout << i << ": " << cur->name << "  ID: " << cur->id
+             << "  GPA: " << cur->gpa << "  Major: " << cur->major << endl;
+
+        cur = cur->next;
+        i++;
+    }
+}
  
 
 int main() {
