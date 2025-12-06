@@ -82,13 +82,13 @@ void deleteStudent(Student*& head) {
 }
 
 
-void searchStudent(Student* &head){
+void searchStudent(){
     int id;
     cout<<"Enter Student's ID to look up: ";
     cin>>id;
 
     if(head == NULL){  //checking if the list is empty. 
-        cout<<"There Are no students registered. ";
+        cout<<"There Are no students registered. \n";
         return;
     }
     Student* temp = head;
@@ -96,7 +96,7 @@ void searchStudent(Student* &head){
     
     while(temp != NULL ){  //traversing in the list
         if(temp->id == id){
-        cout<<"Student Found. ";
+        cout<<"Student Found. \n";
         cout<<"Name: "<<temp->name<<endl;
         cout<<"ID: "<<temp->id<<endl;
         cout<<"GPA: "<<temp->gpa<<endl;
