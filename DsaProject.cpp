@@ -1,7 +1,6 @@
 #include <iostream>
+#include <string>
 using namespace std;
-
- 
 
 struct Student {
     string name;   //this is the data
@@ -10,6 +9,42 @@ struct Student {
     string major;   //this is the data
     Student* next;  //this is the pointer
 };
+
+Student* head = NULL;
+void addStudent() {
+    Student* temp = new Student;
+
+
+    cout << "Enter student name: ";
+    cin.ignore();
+    getline(cin, temp->name);
+
+    cout << "Enter student ID: ";
+    cin >> temp->id;
+
+    cout << "Enter student GPA: ";
+    cin >> temp->gpa;
+
+    cin.ignore(); 
+    cout << "Enter student major: ";
+    getline(cin, temp->major);
+
+    
+    temp->next = NULL;
+
+    if (head == NULL) {
+        head = temp;
+    } 
+    else {
+        Student* cur = head;
+        while (cur->next != NULL) {
+            cur = cur->next;
+        }
+        cur->next = temp;
+    }
+
+    cout << "Student added successfully!\n";
+}
 
 void deleteStudent(Student*& head) {
     int id;
