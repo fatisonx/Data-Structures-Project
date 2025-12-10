@@ -107,6 +107,37 @@ void searchStudent(){
     } 
     cout << "Student not found.\n";
 }
+
+void editStudent() {
+    if (head == NULL) {
+       cout << "There are no students registered.\n";
+        return;
+ }
+    int id;
+       cout << "Enter Student ID to edit: ";
+        cin >> id;
+   Student* temp = head;
+   while (temp != NULL) {
+      if (temp->id == id) {
+    cout << "\nStudent Found!\n";
+    cin.ignore();
+    cout << "Enter new name: ";
+    getline(cin, temp->name);
+ 
+    cout << "Enter new GPA: ";
+    cin >> temp->gpa;
+    cin.ignore();
+ 
+    cout << "Enter new major: ";
+    getline(cin, temp->major);
+ 
+    cout << "\nStudent updated successfully \n";
+    return;
+ }
+    temp = temp->next;
+ }
+    cout << "Student not found \n";
+}
  
 void displayAllStudents() {
     if (head == NULL) {
@@ -125,7 +156,6 @@ void displayAllStudents() {
         i++;
     }
 }
-
 void averageGPA(){
     if(head==NULL){
         cout<<"There are no students regestered. ";
@@ -152,49 +182,54 @@ int main() {
 
     do {
     
-    cout << "      Student Management System      \n";
-    cout << "---–---------------------------------\n";
+    cout << "\n---------------------------------\n";
+    cout << " Student Management System \n";
+    cout << "---------------------------------\n";
     cout << "1. Add Student\n";
     cout << "2. Search Student by ID\n";
     cout << "3. Delete Student by ID\n";
-    cout << "4. Display All Students\n";
-    cout << "5. Calculate The Average\n";
-    cout << "6. Exit\n";
+    cout << "4. Edit Student by ID \n";
+    cout << "5. Display All Students\n";
+    cout << "6. Calculate The Average\n";
+    cout << "7. Exit\n";
     cout << "---------------------------------\n";
     cout << "Enter your choice: ";
         
-        cin >> choice;
-
+    
+    cin >> choice;
         switch (choice) {
             case 1:
-                addStudent();
-                break;
-
+            addStudent();
+            break;
+            
             case 2:
-                searchStudent();
-                break;
-
+            searchStudent();
+            break;
+            
             case 3:
-                deleteStudent(head);
-                break;
+            deleteStudent(head);
+            break;
 
             case 4:
-                displayAllStudents();
-                break;
+            editStudent();
+            break;
 
-            case 5:
-                averageGPA();
-                break;
-
-            case 6:
-                cout << "Exiting program...\n";
-                break;
-
-            default:
-                cout << "Invalid choice! Please try again.\n";
-        }
-
-    } while (choice != 6);
+           case 5:
+           displayAllStudents();
+           break;
+           
+           case 6:
+           averageGPA();
+           break;
+           
+           case 7:
+           cout << "Exiting program...\n";
+           break;
+           
+           default:
+           cout << "Invalid choice! Please try again.\n";
+ }
+ } while (choice != 7);
 
     return 0;
 }
