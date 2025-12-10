@@ -125,6 +125,26 @@ void displayAllStudents() {
         i++;
     }
 }
+
+void averageGPA(){
+    if(head==NULL){
+        cout<<"There are no students regestered. ";
+        return;
+    }
+
+    Student* temp = head;
+    float sum=0;
+    float count=0;
+    float avg;
+
+    while(temp!=NULL){
+        sum+=temp->gpa;
+        count+=1;
+        temp=temp->next;
+    }
+    avg=sum/count;
+    cout<<"The average GPA for the students is: "<<avg<<endl;
+}
  
 
 int main() {
@@ -138,7 +158,8 @@ int main() {
     cout << "2. Search Student by ID\n";
     cout << "3. Delete Student by ID\n";
     cout << "4. Display All Students\n";
-    cout << "5. Exit\n";
+    cout << "5. Calculate The Average\n";
+    cout << "6. Exit\n";
     cout << "---------------------------------\n";
     cout << "Enter your choice: ";
         
@@ -162,6 +183,10 @@ int main() {
                 break;
 
             case 5:
+                averageGPA();
+                break;
+
+            case 6:
                 cout << "Exiting program...\n";
                 break;
 
@@ -169,7 +194,7 @@ int main() {
                 cout << "Invalid choice! Please try again.\n";
         }
 
-    } while (choice != 5);
+    } while (choice != 6);
 
     return 0;
 }
